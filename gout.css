@@ -198,7 +198,72 @@ h2{
 
 /* TEST POUR CARTES EN CHECKBOX */
 
+.card_entrees {
+    position: relative;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 10px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden; /* Pour éviter que l'icône ne dépasse */
+}
 
+.content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.align {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+    transition: all 0.3s ease;
+}
+
+.check-container {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 60px; /* Ajuster selon la taille désirée de la zone du check */
+    background-color: var(--green-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: width 0.3s ease;
+    border-radius: 0 20px 20px 0;
+    opacity: 0;
+}
+
+.btn-check {
+    font-size: 1rem; /* Réduire la taille de l'icône */
+    color: var(--green-bg);
+    background: white; /* Fond blanc pour le petit cercle */
+    border-radius: 50%; /* Forme ronde */
+    padding: 5px; /* Ajuster pour le cercle autour de l'icône */
+    border: 2px solid white; /* Contour autour du cercle */
+}
+
+.card-checkbox:checked ~ .check-container {
+    width: 60px; /* Ajuster cette largeur pour faire apparaître progressivement l'icône */
+    opacity: 1;
+}
+
+.card-checkbox:checked ~ .content .align {
+    padding-right: 70px; /* Pour pousser le texte et le prix vers la gauche */
+}
+
+.card-checkbox {
+    display: none;
+}
 
 
 /**** FIN TEST ****/
@@ -237,5 +302,13 @@ h2{
         100% {
             transform: translateX(-3px);
         }
+    }
+    .card_entrees:hover .check-container {
+        width: 60px; /* Même largeur que lors du clic */
+        opacity: 1;
+    }
+
+    .card_entrees:hover .content .align {
+        padding-right: 70px; /* Pousse le texte vers la gauche, comme avec le clic */
     }
     }

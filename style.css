@@ -71,7 +71,7 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: lightgrey;
+    background: lightgrey;
     flex-direction: row;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
@@ -319,17 +319,28 @@ li {
     transition: opacity 0.2s ease;
 }
 
+/* Garde le coeur plein invisible par défaut */
 .heart-button img.filled-heart {
-    opacity: 0; /* Cache l'image du cœur plein par défaut */
-}
-
-.heart-button input[type="checkbox"]:checked + label img.empty-heart {
-    opacity: 0; /* Cache l'image du cœur vide */
+    opacity: 0;
+    clip-path: inset(100% 0 0 0); /* Masque le cœur à 100% en bas */
+    transition: opacity 0.2s ease-in-out; /* Ajoute une transition d'opacité */
 }
 
 .heart-button input[type="checkbox"]:checked + label img.filled-heart {
-    opacity: 1; /* Affiche l'image du cœur plein */
+    opacity: 1;
+    animation: fillHeartFromBottom 0.5s ease-in-out forwards; /* Animation du remplissage */
 }
+
+/* Animation du remplissage de bas en haut */
+@keyframes fillHeartFromBottom {
+    from {
+        clip-path: inset(100% 0 0 0); /* Masque le cœur depuis le bas */
+    }
+    to {
+        clip-path: inset(0 0 0 0); /* Affiche entièrement le cœur */
+    }
+}
+
 
 @media (min-width: 1024px){
   
@@ -371,7 +382,14 @@ li {
     flex-direction: row-reverse;
     margin-top: -45px;
     padding: 50px;
+    justify-content: space-between;
+    align-items: center;
  }
+
+.footer div{
+    display: flex;
+    gap: 5px;
+}
 
  ul{
     display: flex;
@@ -382,7 +400,23 @@ li {
  }
 
  .card:hover{
-    transform: scale(1.1);
+    transform: scale(1.05);
     transition: 0.3s;
  }
+
+ /* Ajout de l'effet de remplissage au survol */
+ .heart-button:hover img.filled-heart {
+    opacity: 1; /* Assure que le cœur est visible au survol */
+    animation: fillHeartFromBottom 0.5s ease-in-out forwards; /* Animation de remplissage au survol */
+}
+
+/* Au survol du bouton, s'il n'est pas encore coché, le cœur plein est rempli */
+.heart-button img.filled-heart {
+    transition: opacity 0.2s ease-in-out;
+}
+
+/* Pour le cœur vide, on revient à l'état initial */
+.heart-button:hover img.empty-heart {
+    opacity: 0; /* Cache l'image du cœur vide au survol */
+}
 }
