@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Shrikhand&display=swap');
+
+:root {
+    --primary-color: #9356DC;
+    --secondary-color: #FF79DA;
+}
+
+body {
+    background: black;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Shrikhand', cursive;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center; /* Centrer le texte */
+}
+
+/* Machine à écrire */
+.typewriter {
+    font-size: 3rem;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid white;
+    width: 0;
+    animation: typing 3s steps(15) forwards, blink 0.7s step-end infinite;
+    display: inline-block; /* Garde le texte dans un bloc inline */
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 60%; /* Ajuster selon la longueur du texte */
+    }
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+    100% {
+        border-color: white;
+    }
+}
+
+/* Spinner */
+.spinner {
+    border: 5px solid rgba(182, 19, 232, 0.803);
+    border-top: 5px solid var(--primary-color);
+    border-right: 5px solid var(--secondary-color);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-top: 30px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

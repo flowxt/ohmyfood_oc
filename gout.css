@@ -23,7 +23,7 @@ body{
 
 h1 {
     font-family: "Shrikhand", serif;
-    font-size: 2.2rem;
+    font-size: 1.8rem;
 }
 h2{
     margin-bottom: 20px;
@@ -88,23 +88,7 @@ h2{
     padding: 20px;
 }
 
-.card_entrees{
-    background-color: white;
-    border-radius: 20px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    margin-bottom: 15px;
-    min-width: 370px;
-    max-width: 1024px;
-    width: 100%;
-    padding: 15px;
-}
 
-.align{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding-top: 10px;
-}
 
 .plats{
     padding: 20px;
@@ -136,7 +120,6 @@ h2{
     position: relative;
     z-index: 1;
 }
-
 
 
 /* Animation pour faire apparaître chaque élément */
@@ -219,28 +202,44 @@ h2{
     width: 100%;
     cursor: pointer;
     transition: all 0.3s ease;
+    white-space: nowrap;  
+    overflow: hidden;  
+    text-overflow: ellipsis;   
 }
+
+
+    
+
 
 .align {
     display: flex;
     justify-content: space-between;
     padding-top: 10px;
-    transition: all 0.3s ease;
+    transition: all 0.5s ease; 
 }
 
 .check-container {
     position: absolute;
-    right: 0;
+    right: -60px; /* Position initiale hors de la vue */
     top: 0;
     height: 100%;
-    width: 60px; /* Ajuster selon la taille désirée de la zone du check */
+    width: 60px; /* Taille de la zone de l'icône */
     background-color: var(--green-bg);
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: width 0.3s ease;
+    transition: transform 0.5s ease, opacity 0.5s ease; /* Transition fluide */
     border-radius: 0 20px 20px 0;
     opacity: 0;
+}
+
+.card-checkbox:checked ~ .check-container {
+    transform: translateX(-60px); /* Faire glisser l'icône vers la gauche */
+    opacity: 1; /* Rendre l'icône visible progressivement */
+}
+
+.card-checkbox:checked ~ .content .align {
+    padding-right: 70px; /* Pour pousser le texte et le prix vers la gauche */
 }
 
 .btn-check {
@@ -250,15 +249,6 @@ h2{
     border-radius: 50%; /* Forme ronde */
     padding: 5px; /* Ajuster pour le cercle autour de l'icône */
     border: 2px solid white; /* Contour autour du cercle */
-}
-
-.card-checkbox:checked ~ .check-container {
-    width: 60px; /* Ajuster cette largeur pour faire apparaître progressivement l'icône */
-    opacity: 1;
-}
-
-.card-checkbox:checked ~ .content .align {
-    padding-right: 70px; /* Pour pousser le texte et le prix vers la gauche */
 }
 
 .card-checkbox {
@@ -304,11 +294,52 @@ h2{
         }
     }
     .card_entrees:hover .check-container {
-        width: 60px; /* Même largeur que lors du clic */
-        opacity: 1;
+        transform: translateX(-60px); /* Faire glisser l'icône vers la gauche au survol */
+        opacity: 1; /* Rendre l'icône visible progressivement au survol */
     }
 
     .card_entrees:hover .content .align {
-        padding-right: 70px; /* Pousse le texte vers la gauche, comme avec le clic */
+        padding-right: 70px; /* Décaler le texte et le prix au survol */
     }
+}
+    
+
+@media (max-width: 450px) {
+    .align {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 10px;
+        transition: all 0.5s ease;
+        align-items: center; /* Aligne le prix et le texte au centre */
     }
+    
+    .align p {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition: width 0.3s ease;
+        max-width: 100%; /* Largeur par défaut */
+    }
+    
+    .card-checkbox:checked ~ .content .align p:first-child {
+        width: 70%; /* Limite la largeur du texte à 50% */
+    }
+    
+    .card-checkbox:checked ~ .content .align p:last-child {
+        margin-left: 10px; /* Ajoute un petit espace pour éviter que le prix ne soit trop éloigné */
+        flex-shrink: 0; /* Empêche le prix de se réduire trop */
+    }
+    .align p:first-child {
+        width: 70%; /* Limite la largeur du texte à 60% en tout temps */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition: width 0.3s ease; /* Ajoute une transition fluide */
+    }
+    h3{
+        font-size: 1rem;
+    }
+    p{
+        font-size: 0.9rem;
+    }
+}
