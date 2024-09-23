@@ -1,0 +1,86 @@
+// Import Settings (variables)
+@import 'settings';
+
+
+// Styles pour le logo dans le footer
+#logo_footer {
+  font-family: $font-logo;
+  font-size: 1.5rem;
+  display: block;
+  text-align: left;
+  margin-left: 0;
+}
+
+// Styles de base du footer
+.footer {
+  background-color: #353535;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 10px;
+  color: white;
+  font-family: $font-primary;
+
+  ul {
+    padding: 0;
+
+    li {
+      list-style-type: none;
+      padding: 2px;
+      
+      .icon {
+        color: white;
+        font-size: 12px;
+        margin-right: 10px;
+      }
+
+      .icon2 {
+        color: white;
+        font-size: 12px;
+        margin-right: 9px;
+      }
+
+      .link_footer {
+        color: white;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+// Media query pour les écrans à partir de 1024px
+@media (min-width: 1024px) {
+  .footer {
+    flex-direction: row-reverse;
+    margin-top: -45px;
+    padding: 50px;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #logo_footer {
+    padding-left: 15px;
+  }
+
+  .footer div {
+    display: flex;
+    gap: 5px;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 20px;
+    width: 100%;
+  }
+
+  ol {
+    width: 100%;
+  }
+
+  ol li {
+    width: 30%;
+  }
+}
