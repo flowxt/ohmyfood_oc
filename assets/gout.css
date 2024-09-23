@@ -1,0 +1,345 @@
+/*polices*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Shrikhand&display=swap');
+
+:root{
+    /*color*/
+    --background-color: #F6F6F6;
+    --primary-color: #9356DC;
+    --secondary-color: #FF79DA;
+    --tertiary-color: #99E2D0;
+    --green-font: #008766;
+    --green-bg: #99E2D0;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "Roboto", sans-serif;
+}
+
+h1 {
+    font-family: "Shrikhand", serif;
+    font-size: 1.8rem;
+}
+h2{
+    margin-bottom: 20px;
+}
+.gout{
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    min-height: 275px;
+    object-fit: cover; /* Pour s'assurer que l'image couvre bien l'espace défini */
+}
+
+
+.header_arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    background: white;
+    width: 100%;
+    position: relative;
+}
+
+.header_arrow a{
+    position: absolute;
+    left: 15px;
+    transition: transform 0.2s ease;
+}
+.header_arrow a:active {
+    transform: translateX(-3px); /* Déplace la flèche de 3 pixels vers la gauche */
+}
+
+
+.icon_arrow {
+    font-size: 1.5rem;
+}
+
+.menus {
+    background: var(--background-color);
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    width: 100%;
+    top: 55%;
+    position: relative;
+    z-index: 10;
+    top: -50px;
+    padding-bottom: 20px;
+    margin-bottom: -50px;
+    
+}
+
+.title_gout{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+
+
+.entrees{
+    padding: 20px;
+}
+
+
+
+.plats{
+    padding: 20px;
+}
+
+.desserts{
+    padding: 20px;
+}
+
+.commander{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    min-width: 370px;
+    max-width: 1024px;
+    width: 100%;
+    padding-bottom: 20px;
+}
+
+.underline {
+    text-decoration: underline;
+    text-decoration-color: var(--green-bg);
+    text-underline-offset: 8px;
+}
+
+
+.footer {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* Animation pour faire apparaître chaque élément */
+@keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px); /* Part de 30px en dessous */
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0); /* Atteint sa position normale */
+    }
+  }
+  
+  /* Appliquer l'animation aux cartes */
+  .card_entrees {
+      animation: fadeInUp 0.5s ease forwards; /* Durée de 0.5s pour chaque carte */
+      opacity: 0; /* Les cartes sont invisibles au début */
+      display: block; /* Assure que l'élément est visible */
+
+  }
+  
+  /* Définir un délai pour chaque carte */
+  .card_entrees:nth-child(1) {
+      animation-delay: 0.2s; /* Délai pour la première carte */
+  }
+  
+  .card_entrees:nth-child(2) {
+      animation-delay: 0.4s; /* Délai pour la deuxième carte */
+  }
+  
+  .card_entrees:nth-child(3) {
+      animation-delay: 0.6s; /* Délai pour la troisième carte */
+  }
+  
+  .card_entrees:nth-child(4) {
+      animation-delay: 0.8s; /* Délai pour la quatrième carte */
+  }
+  
+  .card_entrees:nth-child(5) {
+      animation-delay: 1s; /* Délai pour la cinquième carte */
+  }
+  
+  /* Pour toutes les cartes qui suivent, j'ajoute un délai */
+  .card_entrees:nth-child(n+6) {
+      animation-delay: calc(0.2s * n); /* Répète l'effet pour les autres cartes */
+  }
+
+  .card_entrees:nth-child(n+7) {
+    animation-delay: calc(0.2s * n); 
+}
+.card_entrees:nth-child(n+8) {
+    animation-delay: calc(0.2s * n); 
+}
+
+.card_entrees:nth-child(n+9) {
+    animation-delay: calc(0.2s * n); 
+}
+
+/* TEST POUR CARTES EN CHECKBOX */
+
+.card_entrees {
+    position: relative;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 10px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden; /* Pour éviter que l'icône ne dépasse */
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;  
+    overflow: hidden;  
+    text-overflow: ellipsis;   
+}
+
+
+    
+
+
+.align {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+    transition: all 0.5s ease; 
+}
+
+.check-container {
+    position: absolute;
+    right: -60px; /* Position initiale hors de la vue */
+    top: 0;
+    height: 100%;
+    width: 60px; /* Taille de la zone de l'icône */
+    background-color: var(--green-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.5s ease, opacity 0.5s ease; /* Transition fluide */
+    border-radius: 0 20px 20px 0;
+    opacity: 0;
+}
+
+.card-checkbox:checked ~ .check-container {
+    transform: translateX(-60px); /* Faire glisser l'icône vers la gauche */
+    opacity: 1; /* Rendre l'icône visible progressivement */
+}
+
+.card-checkbox:checked ~ .content .align {
+    padding-right: 70px; /* Pour pousser le texte et le prix vers la gauche */
+}
+
+.btn-check {
+    font-size: 1rem; /* Réduire la taille de l'icône */
+    color: var(--green-bg);
+    background: white; /* Fond blanc pour le petit cercle */
+    border-radius: 50%; /* Forme ronde */
+    padding: 5px; /* Ajuster pour le cercle autour de l'icône */
+    border: 2px solid white; /* Contour autour du cercle */
+}
+
+.card-checkbox {
+    display: none;
+}
+
+
+/**** FIN TEST ****/
+
+@media (min-width: 1024px){
+    .menus{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+        margin: auto;
+    }
+
+
+
+    .card_entrees{
+        min-width: 670px;
+        max-width: 1024px;
+        width: 100%;
+    }
+   
+
+    .heart-button{
+        margin-left: 50px;
+    }
+
+
+    .header_arrow a:hover {
+        animation: moveLeftRight 0.5s infinite alternate; /*Ajoute une animation de survol*/
+    }
+    @keyframes moveLeftRight {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-3px);
+        }
+    }
+    .card_entrees:hover .check-container {
+        transform: translateX(-60px); /* Faire glisser l'icône vers la gauche au survol */
+        opacity: 1; /* Rendre l'icône visible progressivement au survol */
+    }
+
+    .card_entrees:hover .content .align {
+        padding-right: 70px; /* Décaler le texte et le prix au survol */
+    }
+}
+    
+
+@media (max-width: 450px) {
+    .align {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 10px;
+        transition: all 0.5s ease;
+        align-items: center; /* Aligne le prix et le texte au centre */
+    }
+    
+    .align p {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition: width 0.3s ease;
+        max-width: 100%; /* Largeur par défaut */
+    }
+    
+    .card-checkbox:checked ~ .content .align p:first-child {
+        width: 70%; /* Limite la largeur du texte à 50% */
+    }
+    
+    .card-checkbox:checked ~ .content .align p:last-child {
+        margin-left: 10px; /* Ajoute un petit espace pour éviter que le prix ne soit trop éloigné */
+        flex-shrink: 0; /* Empêche le prix de se réduire trop */
+    }
+    .align p:first-child {
+        width: 70%; /* Limite la largeur du texte à 60% en tout temps */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition: width 0.3s ease; /* Ajoute une transition fluide */
+    }
+    h3{
+        font-size: 1rem;
+    }
+    p{
+        font-size: 0.9rem;
+    }
+}
