@@ -431,7 +431,14 @@ p {
 
 
 @media (min-width: 1024px){
-  #logo_footer {
+  .loader_title{
+    font-size: 5rem;
+  }
+  .loader_txt{
+    font-size: 2rem;
+  }
+  
+    #logo_footer {
     margin-left: 60px;
 
       }
