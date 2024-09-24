@@ -410,6 +410,7 @@ p {
   color: transparent;
   background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
   -webkit-background-clip: text;
+  background-clip: text;
   clip-path: inset(100% 0 0 0); /* Masque le cœur à 100% */
   opacity: 0;
 }
