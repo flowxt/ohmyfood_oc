@@ -500,18 +500,20 @@ p {
  }
 
  /* Ajout de l'effet de remplissage au survol */
- .heart-button:hover img.filled-heart {
-    opacity: 1; /* Assure que le cœur est visible au survol */
-    animation: fillHeartFromBottom 0.5s ease-in-out forwards; /* Animation de remplissage au survol */
-}
+ .heart-button:hover input[type="checkbox"]:not(:checked) + label .filled-heart {
+    opacity: 1;
+    animation: fillHeartFromBottom 1s ease-in-out forwards;
+  }
 
-/* Au survol du bouton, s'il n'est pas encore coché, le cœur plein est rempli */
-.heart-button img.filled-heart {
-    transition: opacity 0.2s ease-in-out;
-}
+  .heart-button:not(:hover) input[type="checkbox"]:not(:checked) + label .filled-heart {
+    opacity: 1;
+    animation: emptyHeartFromTop 1s ease-in-out forwards;
+  }
 
-/* Pour le cœur vide, on revient à l'état initial */
-.heart-button:hover img.empty-heart {
-    opacity: 0; /* Cache l'image du cœur vide au survol */
-}
+  /* Assurez-vous que l'état coché reste prioritaire sur le hover */
+  .heart-button input[type="checkbox"]:checked + label .filled-heart {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+    animation: none;
+  }
 }
