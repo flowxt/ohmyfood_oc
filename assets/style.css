@@ -370,65 +370,79 @@ p {
 /* DOIT TROUVER SOLUTION POUR METTRE BORDURE AU COEUR ET QUE TOUS SOIENT CLICK*/
 
 
-
-
-
-
-
 .heart-button {
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    position: relative;
-    width: 25px; /* Ajustez la taille du conteneur selon vos besoins */
-    height: 25px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  position: relative;
+  width: 25px; /* Ajustez la taille du conteneur selon vos besoins */
+  height: 25px;
 }
 
 .heart-button input[type="checkbox"] {
-    display: none; /* Cache la case à cocher */
+  display: none; /* Cache la case à cocher */
 }
 
 .heart-button label {
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
 
-.heart-button img {
-    width: 100%; /* Ajustez la taille de l'image selon vos besoins */
-    height: 100%;
-    position: absolute;
-    top: 15px;
-    left: -25px;
-    transition: opacity 0.2s ease;
+.empty-heart,
+.filled-heart {
+  font-size: 25px; /* Ajustez la taille de l'icône */
+  position: absolute;
+  top: 15;   /* Superpose les deux icônes au même endroit */
+  left: -25px;  /* Superpose les deux icônes au même endroit */
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.2s ease;
 }
 
-/* Garde le coeur plein invisible par défaut */
-.heart-button img.filled-heart {
-    opacity: 0;
-    clip-path: inset(100% 0 0 0); /* Masque le cœur à 100% en bas */
-    transition: opacity 0.2s ease-in-out; /* Ajoute une transition d'opacité */
+.empty-heart {
+  color: lightgray;
 }
 
-.heart-button input[type="checkbox"]:checked + label img.filled-heart {
-    opacity: 1;
-    animation: fillHeartFromBottom 1s ease-in-out forwards; /* Animation du remplissage */
+.filled-heart {
+  color: transparent;
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  clip-path: inset(100% 0 0 0); /* Masque le cœur à 100% */
+  opacity: 0;
+}
+
+.heart-button input[type="checkbox"]:checked + label .filled-heart {
+  opacity: 1;
+  animation: fillHeartFromBottom 1s ease-in-out forwards;
+}
+
+.heart-button input[type="checkbox"]:not(:checked) + label .filled-heart {
+  opacity: 1;
+  animation: emptyHeartFromTop 1s ease-in-out forwards;
 }
 
 /* Animation du remplissage de bas en haut */
 @keyframes fillHeartFromBottom {
-    from {
-        clip-path: inset(100% 0 0 0); /* Masque le cœur depuis le bas */
-    }
-    to {
-        clip-path: inset(0 0 0 0); /* Affiche entièrement le cœur */
-    }
+  from {
+    clip-path: inset(100% 0 0 0); /* Masque le cœur depuis le bas */
+  }
+  to {
+    clip-path: inset(0 0 0 0); /* Affiche entièrement le cœur */
+  }
 }
 
-
-
+/* Animation du déremplissage de haut en bas */
+@keyframes emptyHeartFromTop {
+  from {
+    clip-path: inset(0 0 0 0); /* Cœur entièrement visible */
+  }
+  to {
+    clip-path: inset(100% 0 0 0); /* Masque le cœur vers le bas */
+  }
+}
 
 @media (min-width: 1024px){
   .loader_title{
